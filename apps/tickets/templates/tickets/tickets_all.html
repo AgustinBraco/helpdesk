@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tickets</title>
+  </head>
+  <body>
+    <div>
+      {% for ticket in tickets %}
+      <div>
+        <h2>Ticket N°{{ ticket.id }}</h2>
+        <div>
+          <p>Titulo: {{ ticket.title }}</p>
+          <p>Descripción: {{ ticket.description }}</p>
+        </div>
+      </div>
+      {% empty %}
+      <p>No hay tickets creados</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
