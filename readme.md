@@ -30,12 +30,25 @@
 
 -----
 
-## App information
+## Information
+
+### Apps:
+- `accounts` → Usuarios, roles y permisos.
+- `clients` → Todo relacionado a clientes.
+- `tickets` → Estados e historial de estados + Información e historial de asignados.
+- `comments` → Comentarios e historial de comentarios.
+- `visits` → Visitas e historial de visitas.
+- `files` → Archivos e historial de archivo
+
 
 ### URLs:
 ```
 .../admin
-.../users
+.../accounts
+.../clients
+.../comments
+.../files
 .../tickets
+.../visits
 ```
 

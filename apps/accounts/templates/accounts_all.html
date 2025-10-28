@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cuentas</title>
+  </head>
+  <body>
+    <div>
+      {% for account in accounts %}
+      <div>
+        <p>Cuenta N°{{ account.id }}</p>
+        <p>Nombre: {{ account.name }}</p>
+      </div>
+      {% empty %}
+      <p>No hay cuentas creadas.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

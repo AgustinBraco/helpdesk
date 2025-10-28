@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clientes</title>
+  </head>
+  <body>
+    <div>
+      {% for client in clients %}
+      <div>
+        <p>Cliente N°{{ client.id }}</p>
+        <p>Nombre: {{ client.name }}</p>
+      </div>
+      {% empty %}
+      <p>No hay clientes creados.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

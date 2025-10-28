@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Archivos</title>
+  </head>
+  <body>
+    <div>
+      {% for file in files %}
+      <div>
+        <p>Archivo N°{{ file.id }}</p>
+        <p>Nombre: {{ file.name }}</p>
+      </div>
+      {% empty %}
+      <p>No hay archivos cargados.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
