@@ -1,4 +1,8 @@
-## Instalación y ejecución
+# Helpdesk
+
+---
+
+## Configuración
 
 ### Crear entorno virtual
 
@@ -12,13 +16,10 @@
 
 `pip install -r requirements.txt`
 
-### Ejecutar servidor
+### Crear variables de entorno:
 
-`python3 manage.py runserver`
-
----
-
-## Configuración
+- `DJANGO_SECRET_KEY`
+- `HOST`
 
 ### Crear migraciones
 
@@ -28,17 +29,15 @@
 
 `python3 manage.py migrate`
 
----
-
-## Creación
-
-### Crear nueva app
-
-`python3 manage.py startapp name apps/name`
-
-### Crear nuevo super-user
+### Crear super usuario
 
 `python3 manage.py createsuperuser`
+
+---
+
+## Ejecución
+
+`python3 manage.py runserver`
 
 ---
 
