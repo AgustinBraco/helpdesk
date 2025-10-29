@@ -1,6 +1,6 @@
 from pathlib import Path
-
 from dotenv import load_dotenv
+
 import os
 
 load_dotenv()
@@ -19,9 +19,10 @@ MEDIA_ROOT = BASE_DIR / "media"
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = "RENDER" not in os.environ
 
-ALLOWED_HOSTS = [os.environ.get("HOST")]
+ALLOWED_HOSTS = [os.environ.get("HOSTS")]
 
 
 # Application definition
