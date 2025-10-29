@@ -22,7 +22,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # DEBUG = True
 DEBUG = "RENDER" not in os.environ
 
-ALLOWED_HOSTS = [os.environ.get("HOSTS")]
+ALLOWED_HOSTS = [os.environ.get("HOST")]
 
 
 # Application definition
