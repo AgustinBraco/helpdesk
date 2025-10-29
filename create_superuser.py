@@ -1,6 +1,6 @@
 import os
 import django
-from django.contrib.auth.models import User
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,6 +11,8 @@ EMAIL = os.environ.get("EMAIL")
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "helpdesk.settings")
 django.setup()
+
+from django.contrib.auth.models import User
 
 if not User.objects.filter(username=USERNAME).exists():
     User.objects.create_superuser(
