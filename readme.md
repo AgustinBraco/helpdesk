@@ -20,6 +20,9 @@
 
 - `DJANGO_SECRET_KEY`
 - `HOST`
+- `USERNAME`
+- `PASSWORD`
+- `EMAIL`
 
 ### Crear migraciones
 
