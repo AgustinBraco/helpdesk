@@ -1,10 +1,30 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Client(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=266)
+    tax_id = models.CharField(max_length=15)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    role = models.ForeignKey(
+        "roles.Rol", on_delete=models.CASCADE, related_name="clients"
+    )
 
     class Meta:
-        verbose_name = "Client"
-        verbose_name_plural = "Clients"
+        db_table = "clients"
+
+
+class Company(Client):
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = "companies"
+
+
+class Person(Client):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    birthday = models.DateField(default=timezone.now)
+
+    class Meta:
+        db_table = "persons"

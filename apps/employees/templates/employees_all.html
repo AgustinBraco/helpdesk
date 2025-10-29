@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Empleados</title>
+  </head>
+  <body>
+    <div>
+      {% for employee in employees %}
+      <div>
+        <p>Nombre: {{ employee.first_name }}</p>
+      </div>
+      {% empty %}
+      <p>No hay empleados creados.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

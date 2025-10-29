@@ -1,54 +1,111 @@
-## Installation and execution
+## Instalación y ejecución
 
-### Create virtual environment:
+### Crear entorno virtual
+
 `python3 -m venv env`
 
-### Activate virtual environment:
+### Activar entorno virtual
+
 `source env/bin/activate`
 
-### Install dependencies:
+### Instalar dependencias
+
 `pip install -r requirements.txt`
 
-### Run server:
+### Ejecutar servidor
+
 `python3 manage.py runserver`
 
------
+---
 
-## Configuration
+## Configuración
 
-### Create app:
-`python3 manage.py startapp name apps/name`
+### Crear migraciones
 
-### Make migrations:
 `python3 manage.py makemigrations`
 
-### Migrate:
+### Migrar
+
 `python3 manage.py migrate`
 
-### Create super user:
+---
+
+## Creación
+
+### Crear nueva app
+
+`python3 manage.py startapp name apps/name`
+
+### Crear nuevo super-user
+
 `python3 manage.py createsuperuser`
 
------
+---
 
-## Information
+## Apps
 
-### Apps:
-- `accounts` → Usuarios, roles y permisos.
-- `clients` → Todo relacionado a clientes.
-- `tickets` → Estados e historial de estados + Información e historial de asignados.
-- `comments` → Comentarios e historial de comentarios.
-- `visits` → Visitas e historial de visitas.
-- `files` → Archivos e historial de archivo
+### Clientes
 
+- Nombre: `clients`
+- URLs: `/clients`
+- Modelos: `Client` → `Company` & `Person`
+- Vistas: `clients_all`
+- Objetivo: Gestión de clientes (empresas y personas).
 
-### URLs:
-```
-.../admin
-.../accounts
-.../clients
-.../comments
-.../files
-.../tickets
-.../visits
-```
+### Comentarios
 
+- Nombre: `comments`
+- URLs: `/comments`
+- Modelos: `Comment`
+- Vistas: `comments_all`
+- Objetivo: Gestión de comentarios.
+
+### Empleados
+
+- Nombre: `employees`
+- URLs: `/employees`
+- Modelos: `Employees` & `EmployeeHistory`
+- Vistas: `employees_all`
+- Objetivo: Gestión de empleados e historial de asignaciones.
+
+### Archivos
+
+- Nombre: `files`
+- URLs: `/files`
+- Modelos: `Files`
+- Vistas: `files_all`
+- Objetivo: Gestión de archivos.
+
+### Roles
+
+- Nombre: `roles`
+- URLs: `/roles`
+- Modelos: `Rol` & `Permission` & `RolPermission`
+- Vistas: `roles_all`
+- Objetivo: Gestión de roles y permisos.
+
+### Estados
+
+- Nombre: `states`
+- URLs: `/states`
+- Modelos: `State` & `StateHistory`
+- Vistas: `states_all`
+- Objetivo: Gestión e historial de estados.
+
+### Tickets
+
+- Nombre: `tickets`
+- URLs: `/tickets`
+- Modelos: `Ticket`
+- Vistas: `tickets_all`
+- Objetivo: Gestión de tickets.
+
+### Visitas
+
+- Nombre: `visits`
+- URLs: `/visits`
+- Modelos: `Visit`
+- Vistas: `visits_all`
+- Objetivo: Gestión de visitas.
+
+---

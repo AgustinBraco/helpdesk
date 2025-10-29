@@ -32,10 +32,12 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    "apps.accounts",
     "apps.clients",
     "apps.comments",
+    "apps.employees",
     "apps.files",
+    "apps.roles",
+    "apps.states",
     "apps.tickets",
     "apps.visits",
 ]

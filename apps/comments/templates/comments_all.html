@@ -7,8 +7,7 @@
     <div>
       {% for comment in comments %}
       <div>
-        <p>Comentario N°{{ comment.id }}</p>
-        <p>Nombre: {{ comment.name }}</p>
+        <p>Contenido: {{ comment.content }}</p>
       </div>
       {% empty %}
       <p>No hay comentarios creados.</p>

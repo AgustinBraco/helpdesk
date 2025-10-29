@@ -1,10 +1,16 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Comment(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=266)
+    ticket = models.ForeignKey(
+        "tickets.Ticket", on_delete=models.CASCADE, related_name="comments"
+    )
+    employee = models.ForeignKey(
+        "employees.Employee", on_delete=models.CASCADE, related_name="comments"
+    )
+    content = models.TextField()
+    created_at = models.DateField(default=timezone.now)
 
     class Meta:
-        verbose_name = "Comment"
-        verbose_name_plural = "Comments"
+        db_table = "comments"

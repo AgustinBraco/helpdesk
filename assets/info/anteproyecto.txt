@@ -1,0 +1,56 @@
+Sistema de Tickets de Soporte - Empresa de Seguridad
+
+1. Problemática
+En muchas pequeñas y medianas empresas, la gestión de reclamos o solicitudes de soporte técnico se realiza de manera desorganizada, a través de diferentes canales como correo electrónico, llamadas telefónicas o mensajes de WhatsApp y redes sociales. Este enfoque no centralizado genera:
+- Pérdida de información relevante.
+- Dificultades en el seguimiento de los casos.
+- Demoras en la resolución de problemas.
+- Impacto negativo en la satisfacción de los clientes.
+En el contexto de una empresa de seguridad, esta problemática es aún más crítica, ya que los clientes suelen reportar incidentes relacionados con cámaras, alarmas o sistemas de monitoreo, donde la rapidez y claridad en la atención son fundamentales.
+
+2. Objetivo
+Desarrollar un sistema que centralice la gestión de tickets de soporte, que su función principal sea facilitar la comunicación entre clientes, agentes de soporte y técnicos.
+El sistema permitirá:
+- Centralizar la información de los reclamos.
+- Garantizar el seguimiento de cada ticket.
+- Reducir tiempos de respuesta.
+- Mejorar la satisfacción del cliente mediante un flujo claro de resolución de problemas.
+
+3. Roles
+A. Cliente:
+- Registra reclamos o solicitudes de soporte.
+- Realiza seguimiento del estado de sus tickets.
+- Puede adjuntar archivos o información adicional.
+
+B. Soporte:
+- Reciben los tickets de los clientes.
+- Clasifican los tickets por prioridad y categoría.
+- Derivan los tickets al técnico correspondiente.
+- Una vez que el técnico devuelve la resolución, comunican la respuesta al cliente y cierran el ticket.
+
+C. Técnico:
+- Recibe los tickets derivados por soporte.
+- Analiza y resuelve el problema.
+- Devuelve la solución al área de soporte para su validación y comunicación con el cliente.
+
+D. Administrador:
+- Gestiona usuarios (clientes, soporte, técnicos y admnistradores).
+- Tiene todos los accesos y permisos.
+- Accede a reportes y métricas de desempeño del sistema.
+
+4. Alcance
+La plataforma permitirá las siguientes funcionalidades:
+- Gestión de usuarios: registro, autenticación y roles.
+- Gestión de tickets: creación, consulta, actualización y eliminación.
+- Clasificación de tickets por categorías y prioridades.
+- Comunicación interna en el ticket con posibilidad de adjuntar archivos.
+- Notificaciones por cambios de estado, asignaciones o interacciones relevantes.
+- Reportes y estadísticas.
+
+Ejemplo de flujo de trabajo de un ticket:
+1. Cliente: carga un ticket en el sistema reportando un problema (ejemplo: “Cámara fuera de servicio”).
+2. Soporte: recibe el ticket, lo clasifica y lo deriva al técnico correspondiente.
+3. Técnico: analiza, resuelve el problema y devuelve la solución a soporte.
+4. Soporte: valida la solución, se comunica con el cliente, se asegura de que el problema sea resuelto y cierra el ticket.
+
+Administrador: no interactúa con los tickets, sino que administra el sistema internamente.

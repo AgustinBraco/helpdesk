@@ -1,14 +1,22 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Ticket(models.Model):
-    id = models.IntegerField(primary_key=True)
-    title = models.CharField(max_length=266)
-    description = models.CharField(max_length=266)
-
-    def __str__(self):
-        return f"Ticket N°{self.id}: {self.title}"
+    state = models.ForeignKey(
+        "states.State", on_delete=models.CASCADE, related_name="tickets"
+    )
+    employee = models.ForeignKey(
+        "employees.Employee", on_delete=models.CASCADE, related_name="tickets"
+    )
+    client = models.ForeignKey(
+        "clients.Client", on_delete=models.CASCADE, related_name="tickets"
+    )
+    prority = models.CharField(max_length=5)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    created_at = models.DateField(default=timezone.now)
+    closed_at = models.DateField(null=True, blank=True)
 
     class Meta:
-        verbose_name = "Ticket"
-        verbose_name_plural = "Tickets"
+        db_table = "tickets"
