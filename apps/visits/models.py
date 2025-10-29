@@ -10,7 +10,10 @@ class Visit(models.Model):
         "employees.Employee", on_delete=models.CASCADE, related_name="visits"
     )
     content = models.TextField()
-    created_at = models.DateField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = "visits"
+
+    def __str__(self):
+        return self.content

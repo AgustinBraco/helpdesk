@@ -13,15 +13,21 @@ class Employee(models.Model):
     class Meta:
         db_table = "employees"
 
+    def __str__(self):
+        return self.email
+
 
 class EmployeeHistory(models.Model):
     ticket = models.ForeignKey(
-        "tickets.Ticket", on_delete=models.CASCADE, related_name="employees"
+        "tickets.Ticket", on_delete=models.CASCADE, related_name="employees_history"
     )
     employee = models.ForeignKey(
-        "employees.Employee", on_delete=models.CASCADE, related_name="employees"
+        Employee, on_delete=models.CASCADE, related_name="employees_history"
     )
-    changed_at = models.DateField(default=timezone.now)
+    changed_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = "employees_history"
+
+    def __str__(self):
+        return f"{self.employee} - {self.ticket}"

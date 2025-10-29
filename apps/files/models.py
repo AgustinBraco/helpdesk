@@ -6,11 +6,11 @@ class File(models.Model):
     ticket = models.ForeignKey(
         "tickets.Ticket", on_delete=models.CASCADE, related_name="files"
     )
-    employee = models.ForeignKey(
-        "employees.Employee", on_delete=models.CASCADE, related_name="files"
-    )
-    content = models.TextField()
-    created_at = models.DateField(default=timezone.now)
+    content = models.FileField(upload_to="files/%Y%m%d/")
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = "files"
+
+    def __str__(self):
+        return self.content.name

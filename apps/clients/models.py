@@ -13,12 +13,18 @@ class Client(models.Model):
     class Meta:
         db_table = "clients"
 
+    def __str__(self):
+        return self.tax_id
+
 
 class Company(Client):
     name = models.CharField(max_length=255)
 
     class Meta:
         db_table = "companies"
+
+    def __str__(self):
+        return self.name
 
 
 class Person(Client):
@@ -28,3 +34,6 @@ class Person(Client):
 
     class Meta:
         db_table = "persons"
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"

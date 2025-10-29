@@ -12,11 +12,14 @@ class Ticket(models.Model):
     client = models.ForeignKey(
         "clients.Client", on_delete=models.CASCADE, related_name="tickets"
     )
-    prority = models.CharField(max_length=5)
+    priority = models.CharField(max_length=5)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    created_at = models.DateField(default=timezone.now)
-    closed_at = models.DateField(null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    closed_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         db_table = "tickets"
+
+    def __str__(self):
+        return self.title
