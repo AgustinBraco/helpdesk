@@ -2,23 +2,24 @@ import os
 import django
 
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
 
-USERNAME = os.environ.get("USERNAME")
-PASSWORD = os.environ.get("PASSWORD")
-EMAIL = os.environ.get("EMAIL")
+SU_USERNAME = os.environ.get("SU_USERNAME")
+SU_PASSWORD = os.environ.get("SU_PASSWORD")
+SU_EMAIL = os.environ.get("SU_EMAIL")
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "helpdesk.settings")
 django.setup()
 
 from django.contrib.auth.models import User
 
-if not User.objects.filter(username=USERNAME).exists():
+if not User.objects.filter(username=SU_USERNAME).exists():
     User.objects.create_superuser(
-        username=USERNAME,
-        email=EMAIL,
-        password=PASSWORD,
+        username=SU_USERNAME,
+        email=SU_EMAIL,
+        password=SU_PASSWORD,
     )
     print("Superuser created")
 else:

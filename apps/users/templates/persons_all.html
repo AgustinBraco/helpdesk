@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Personas</title>
+  </head>
+  <body>
+    <div>
+      {% for person in persons %}
+      <p>{{ person.first_name }} {{ person.last_name }}</p>
+      {% empty %}
+      <p>No hay personas creadas.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

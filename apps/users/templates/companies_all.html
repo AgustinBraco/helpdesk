@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compañias</title>
+  </head>
+  <body>
+    <div>
+      {% for company in companies %}
+      <p>{{ company.name }}</p>
+      {% empty %}
+      <p>No hay compañias creadas.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

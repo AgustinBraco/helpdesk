@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comentarios</title>
+  </head>
+  <body>
+    <div>
+      {% for comment in comments %}
+      <p>{{ comment.content }}</p>
+      {% empty %}
+      <p>No hay comentarios registrados.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

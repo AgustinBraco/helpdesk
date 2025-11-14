@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Empleados</title>
+  </head>
+  <body>
+    <div>
+      {% for employee in employees %}
+      <p>{{ employee.tax_id }}</p>
+      {% empty %}
+      <p>No hay empleados creados.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

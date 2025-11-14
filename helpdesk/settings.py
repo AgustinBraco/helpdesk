@@ -41,14 +41,11 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    "apps.clients",
-    "apps.comments",
-    "apps.employees",
-    "apps.files",
+    "apps.attachments",
+    "apps.interactions",
     "apps.roles",
-    "apps.states",
     "apps.tickets",
-    "apps.visits",
+    "apps.users",
 ]
 
 THIRD_PARTY_APPS = []

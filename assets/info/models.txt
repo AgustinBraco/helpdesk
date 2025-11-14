@@ -1,0 +1,20 @@
+Attachments
+- Attachments
+
+Interactions
+- Comments
+- Visits
+
+Roles
+- Employees
+- Clients
+
+Tickets
+- Tickets
+- States
+- TicketHistory
+
+Users
+- Person
+- Contact
+- Companies

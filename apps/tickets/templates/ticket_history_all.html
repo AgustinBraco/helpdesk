@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Historial de tickets</title>
+  </head>
+  <body>
+    <div>
+      {% for history in ticket_history %}
+      <p>{{ history.timestamp }}</p>
+      {% empty %}
+      <p>No hay historial disponible.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

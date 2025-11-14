@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contactos</title>
+  </head>
+  <body>
+    <div>
+      {% for contact in contacts %}
+      <p>{{ contact.email }}</p>
+      {% empty %}
+      <p>No hay contactos registrados.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
