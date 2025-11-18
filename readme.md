@@ -23,6 +23,7 @@
 - `SU_USERNAME`
 - `SU_PASSWORD`
 - `SU_EMAIL`
+- `DEBUG`
 
 ### Crear migraciones
 
