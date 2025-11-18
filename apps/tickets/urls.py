@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import tickets, ticket, create
+from .views import TicketsView, TicketDetailView, TicketCreateView
 
 urlpatterns = [
-    path("", tickets, name="tickets"),
-    path("<int:id>/", ticket, name="ticket"),
-    path("create/", create, name="create"),
+    path("tickets/", TicketsView.as_view(), name="tickets"),
+    path("tickets/<int:id>/", TicketDetailView.as_view(), name="ticket"),
+    path("tickets/create/", TicketCreateView.as_view(), name="create"),
 ]

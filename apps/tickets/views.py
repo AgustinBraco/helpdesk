@@ -1,23 +1,22 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Ticket
 
 
-@login_required
-def tickets(request):
-    return render(request, "tickets.html")
+class TicketsView(LoginRequiredMixin, TemplateView):
+    template_name = "tickets/tickets.html"
 
 
-@login_required
-def ticket(request, id):
-    ticket = Ticket.objects.filter(id=id).first()
+class TicketDetailView(LoginRequiredMixin, TemplateView):
+    template_name = "tickets/ticket.html"
 
-    if ticket is None:
-        return redirect("tickets")
-    else:
-        return render(request, "ticket.html", {"ticket": ticket})
+    def get(self, request, id):
+        ticket = Ticket.objects.filter(id=id).first()
+        if ticket is None:
+            return redirect("tickets")
+        return self.render_to_response({"ticket": ticket})
 
 
-@login_required
-def create(request):
-    return render(request, "create.html")
+class TicketCreateView(LoginRequiredMixin, TemplateView):
+    template_name = "tickets/create.html"

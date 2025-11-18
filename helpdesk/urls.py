@@ -8,5 +8,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home_redirect, name="home"),
     path("", include("apps.users.urls")),
-    path("tickets/", include("apps.tickets.urls")),
+    path("", include("apps.tickets.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
