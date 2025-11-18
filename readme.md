@@ -52,37 +52,183 @@
 
 ### Attachments
 
-- URLs: `/attachments`
-- Modelos: `Attachment`
-- Vistas: `attachments_all`
-- Objetivo: Gestión de archivos.
+- Gestión de archivos.
+- Modelos:
+
+```
+Attachment
+```
 
 ### Interactions
 
-- URLs: `/interactions` - `/interactions/comments` - `/interactions/visits`
-- Modelos: `Comment`, `Visit`
-- Vistas: `interactions` - `comments` - `visits`
-- Objetivo: Gestión de comentarios y visitas.
+- Gestión de comentarios y visitas.
+- Modelos:
+
+```
+Comment
+Visit
+```
 
 ### Roles
 
-- URLs: `/roles` - `/roles/employees` - `/roles/clients`
-- Modelos: `Employee` - `Client`
-- Vistas: `roles` - `employees` - `clients`
-- Objetivo: Gestión de empleados y clientes.
+- Gestión de empleados y clientes.
+- Modelos:
+
+```
+Employee
+Client
+```
 
 ### Tickets
 
-- URLs: `/tickets` - `/tickets/tickets` - `/tickets/states` - `/tickets/ticket_history`
-- Modelos: `Ticket` - `State` - `TicketHistory`
-- Vistas: `tickets` - `ticket_history` - `states` - `tickets`
-- Objetivo: Gestión de tickets, estados e historial de tickets.
+- Gestión de tickets, estados e historial de tickets.
+
+- Modelos:
+
+```
+Ticket
+State
+TicketHistory
+```
+
+- URLs:
+
+```
+/tickets
+/tickets/:id
+/tickets/create
+```
+
+- Vistas:
+
+```
+/tickets
+/tickets/:id
+/tickets/create
+```
 
 ### Users
 
-- URLs: `/users` - `/users/contacts` - `/users/companies` - `/users/persons` -
-- Modelos: `Contact` - `Company` - `Person`
-- Vistas: `users` - `contacts` - `companies` - `persons`
-- Objetivo: Gestión de contactos, compañias y personas.
+- Gestión de contactos, compañias y personas.
+- Modelos:
+
+```
+Contact
+Company
+Person
+```
+
+- URLs:
+
+```
+/login
+/logout
+```
+
+- Vistas:
+
+```
+/login
+```
 
 ---
+
+## Modelos
+
+### Attachment
+
+- id_history: ForeignKey
+- content: FileField
+- created_at: DateTimeField
+
+### Comment
+
+- id_history: ForeignKey
+- content: TextField
+- created_at: DateTimeField
+
+### Visit
+
+- id_history: ForeignKey
+- content: TextField
+- created_at: DateTimeField
+
+### Employee
+
+- id_person: ForeignKey
+- id_contact: ForeignKey
+- tax_id: CharField
+- role: CharField
+
+### Client
+
+- id_person: ForeignKey
+- id_contact: ForeignKey
+- id_company: ForeignKey
+- tax_id: CharField
+- role: CharField
+
+### Ticket
+
+- id_client: ForeignKey
+- priority: CharField
+- title: CharField
+- description: TextField
+- created_at: DateTimeField
+- closed_at: DateTimeField
+
+### State
+
+- id_ticket: ForeignKey
+- state: CharField
+- created_at: DateTimeField
+
+### TicketHistory
+
+- id_ticket: ForeignKey
+- id_employee: ForeignKey
+- timestamp: DateTimeField
+
+### Contact
+
+- email: CharField
+- password: TextField
+- phone: CharField
+
+### Company
+
+- name: CharField
+
+### Person
+
+- first_name: CharField
+- last_name: CharField
+- birthday: DateField
+
+---
+
+## Redirecciones
+
+### Home
+
+- Logeado ➜ Tickets
+- NO logeado ➜ Login
+
+### Login
+
+- Logeado ➜ Tickets
+- NO logeado ➜ Login
+
+### Logout
+
+- Logeado ➜ Login
+- NO logeado ➜ Login
+
+### Tickets
+
+- Logeado ➜ Login
+- NO logeado ➜ Login
+
+---
+
+## Gracias!

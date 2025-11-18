@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Attachment(models.Model):
     id_history = models.ForeignKey(
-        "tickets.TicketHistory", on_delete=models.CASCADE, related_name="attachments"
+        "tickets.TicketHistory", on_delete=models.PROTECT, related_name="attachments"
     )
     content = models.FileField(upload_to="files/%Y%m%d/")
     created_at = models.DateTimeField(default=timezone.now)

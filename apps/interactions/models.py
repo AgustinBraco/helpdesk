@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Comment(models.Model):
     id_history = models.ForeignKey(
-        "tickets.TicketHistory", on_delete=models.CASCADE, related_name="comments"
+        "tickets.TicketHistory", on_delete=models.PROTECT, related_name="comments"
     )
     content = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
@@ -19,7 +19,7 @@ class Comment(models.Model):
 
 class Visit(models.Model):
     id_history = models.ForeignKey(
-        "tickets.TicketHistory", on_delete=models.CASCADE, related_name="visits"
+        "tickets.TicketHistory", on_delete=models.PROTECT, related_name="visits"
     )
     content = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)

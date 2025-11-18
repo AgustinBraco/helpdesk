@@ -2,4 +2,10 @@ from django.contrib import admin
 from .models import Employee, Client
 
 admin.site.register(Employee)
-admin.site.register(Client)
+
+
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        obj.full_clean()
+        super().save_model(request, obj, form, change)
