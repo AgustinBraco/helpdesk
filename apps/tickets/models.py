@@ -9,7 +9,7 @@ class Ticket(models.Model):
     priority = models.CharField(max_length=5)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    created_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
     closed_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
@@ -25,7 +25,7 @@ class State(models.Model):
         Ticket, on_delete=models.PROTECT, related_name="states"
     )
     state = models.CharField(max_length=255)
-    created_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name = "State"
@@ -42,7 +42,7 @@ class TicketHistory(models.Model):
     id_employee = models.ForeignKey(
         "roles.Employee", on_delete=models.PROTECT, related_name="ticket_history"
     )
-    timestamp = models.DateTimeField(default=timezone.now())
+    timestamp = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name = "TicketHistory"

@@ -18,7 +18,7 @@ class Contact(models.Model):
 class Person(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    birthday = models.DateField(default=timezone.now())
+    birthday = models.DateField(default=timezone.now)
 
     class Meta:
         verbose_name = "Person"
