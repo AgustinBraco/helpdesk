@@ -28,7 +28,6 @@ DEBUG = os.environ.get("DEBUG")
 
 ALLOWED_HOSTS = [os.environ.get("HOST")]
 
-
 # Application definition
 
 DJANGO_APPS = [
@@ -89,8 +88,12 @@ WSGI_APPLICATION = "helpdesk.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "helpdesk",
+        "USER": "postgres",
+        "PASSWORD": "admin123",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
