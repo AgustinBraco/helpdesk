@@ -1,7 +1,134 @@
 {% extends "base.html" %}
 {% block title %}Ticket #{{ ticket.id }}{% endblock %}
+
 {% block content %}
-<div>
-  <p>Ticket #{{ ticket.id }}</p>
+<div class="min-h-screen bg-gray-100 p-6">
+
+  <!-- Encabezado -->
+  <div class="flex items-center gap-4 mb-6">
+    <a href="/tickets/" class="text-gray-700 hover:text-black text-2xl font-semibold">
+      ←
+    </a>
+    <h1 class="text-3xl font-bold">{{ ticket.title }}</h1>
+    <span class="text-gray-500 text-lg">#{{ ticket.id }}</span>
+  </div>
+
+  <!-- Estado -->
+  <div class="bg-white p-4 rounded-xl shadow mb-8 flex items-center gap-4">
+    <span class="text-gray-700 font-semibold">Estado actual:</span>
+    <select class="border border-gray-300 rounded-lg px-3 py-2">
+      {% if ticket.states.last %}
+      <option>{{ ticket.states.last.state }}</option>
+      {% else %}
+      <option>Sin estado</option>
+      {% endif %}
+    </select>
+  </div>
+
+  <!-- GRID PRINCIPAL -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <!-- INFORMACIÓN -->
+    <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4 text-gray-800">Información</h2>
+
+      <div class="grid grid-cols-1 gap-4 text-gray-700">
+
+        <!-- Datos de la persona -->
+        {% if ticket.id_client.id_person %}
+        <p><strong>Cliente ID:</strong> {{ ticket.id_client.id }}</p>
+        <p><strong>Nombre:</strong> {{ ticket.id_client.id_person.first_name }}</p>
+        <p><strong>Apellido:</strong> {{ ticket.id_client.id_person.last_name }}</p>
+        {% endif %}
+
+        <!-- Datos de contacto -->
+        <p><strong>Correo:</strong> {{ ticket.id_client.id_contact.email }}</p>
+        <p><strong>Teléfono:</strong> {{ ticket.id_client.id_contact.phone }}</p>
+
+        <!-- Datos de la empresa -->
+        {% if ticket.id_client.id_company %}
+        <p><strong>Empresa:</strong> {{ ticket.id_client.id_company.name }}</p>
+        <p><strong>Razón Social:</strong> {{ ticket.id_client.id_company.name }}</p>
+        {% endif %}
+
+        <!-- Tax ID -->
+        <p><strong>CUIT/CUIL:</strong> {{ ticket.id_client.tax_id }}</p>
+
+        <!-- Prioridad del ticket -->
+        <p><strong>Prioridad:</strong> {{ ticket.priority }}</p>
+
+        {% with last_history=ticket.ticket_history.last %}
+        {% if last_history and last_history.id_employee %}
+        <p><strong>Asignado:</strong>
+          {{ last_history.id_employee.id_person.first_name }}
+          {{ last_history.id_employee.id_person.last_name }}
+        </p>
+        {% else %}
+        <p><strong>Asignado:</strong> No asignado</p>
+        {% endif %}
+        {% endwith %}
+
+      </div>
+
+
+      <div class="mt-6">
+        <h3 class="font-semibold text-gray-800 mb-2">Descripción del Ticket:</h3>
+        <p class="text-gray-600 leading-relaxed">
+          {{ ticket.description }}
+        </p>
+      </div>
+    </div>
+
+    <!-- COMENTARIOS -->
+    <div class="bg-white p-6 rounded-xl shadow h-fit">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold text-gray-800">Comentarios</h2>
+
+        <!-- Botón para abrir el formulario -->
+        <button onclick="document.getElementById('commentForm').classList.toggle('hidden')"
+          class="text-gray-600 text-2xl hover:text-black font-bold">
+          +
+        </button>
+      </div>
+
+      <!-- Listado de comentarios -->
+      {% if ticket.comments.all %}
+      {% for c in ticket.comments.all %}
+      <div class="border-b border-gray-200 pb-2 mb-2">
+        <p class="text-gray-800">{{ c.comment }}</p>
+        <p class="text-gray-400 text-sm">Hace {{ c.created_at }}</p>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p class="text-gray-500 text-sm">No hay comentarios aún.</p>
+      {% endif %}
+
+      <!-- Formulario oculto -->
+      <form id="commentForm" method="POST" class="hidden mt-4">
+        {% csrf_token %}
+        <textarea name="new_comment" class="w-full border rounded-lg p-2"
+          placeholder="Escribe un comentario..."></textarea>
+        <button type="submit" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg">
+          Agregar comentario
+        </button>
+      </form>
+    </div>
+
+    <!-- VISITAS -->
+    <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">Visitas</h2>
+      <p class="text-gray-500 text-sm">No hay visitas registradas.</p>
+    </div>
+
+    <!-- ARCHIVOS -->
+    <div class="bg-white p-6 rounded-xl shadow">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold text-gray-800">Archivos</h2>
+        <button class="text-gray-600 text-2xl hover:text-black font-bold">+</button>
+      </div>
+
+      <p class="text-gray-500 text-sm">No hay archivos subidos.</p>
+    </div>
+  </div>
 </div>
 {% endblock %}

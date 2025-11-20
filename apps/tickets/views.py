@@ -1,7 +1,8 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Ticket
+
+from apps.tickets.models import Ticket
 
 
 class TicketsView(LoginRequiredMixin, TemplateView):
