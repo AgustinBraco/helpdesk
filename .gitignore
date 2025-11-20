@@ -23,3 +23,9 @@ db.sqlite3
 EOF
 generar_contexto.py
 proyecto_completo.txt
+
+# Node
+node_modules/
+npm-debug.log*
+pnpm-lock.yaml
+yarn.lock

@@ -3,12 +3,31 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Helpdesk{% endblock %}</title>
-    <!-- CSS global -->
+    <!-- Tailwind CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
-  <body>
-    {% block content %} {% endblock %}
+  <body class="bg-gray-50">
+    <!-- Header simple solo con logout -->
+    {% if user.is_authenticated %}
+    <header class="bg-white shadow-sm border-b">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-end items-center py-4">
+          <nav class="flex items-center space-x-4">
+            <span class="text-gray-600">Hola, {{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="text-gray-600 hover:text-gray-900 transition duration-150">Cerrar sesión</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
 
     <!-- JS global -->
     <script src="{% static 'js/scripts.js' %}"></script>
