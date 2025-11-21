@@ -92,16 +92,14 @@
       </div>
 
       <!-- Listado de comentarios -->
-      {% if ticket.comments.all %}
-      {% for c in ticket.comments.all %}
+      {% for c in comments %}
       <div class="border-b border-gray-200 pb-2 mb-2">
-        <p class="text-gray-800">{{ c.comment }}</p>
-        <p class="text-gray-400 text-sm">Hace {{ c.created_at }}</p>
+        <p class="text-gray-800">{{ c.content }}</p>
+        <p class="text-gray-400 text-sm">{{ c.created_at }}</p>
       </div>
-      {% endfor %}
-      {% else %}
+      {% empty %}
       <p class="text-gray-500 text-sm">No hay comentarios aún.</p>
-      {% endif %}
+      {% endfor %}
 
       <!-- Formulario oculto -->
       <form id="commentForm" method="POST" class="hidden mt-4">
@@ -117,7 +115,17 @@
     <!-- VISITAS -->
     <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow">
       <h2 class="text-xl font-semibold text-gray-800 mb-4">Visitas</h2>
+
+      {% if visits %}
+      {% for v in visits %}
+      <div class="border-b border-gray-200 pb-2 mb-2">
+        <p class="text-gray-800">{{ v.content }}</p>
+        <p class="text-gray-400 text-sm">{{ v.created_at }}</p>
+      </div>
+      {% endfor %}
+      {% else %}
       <p class="text-gray-500 text-sm">No hay visitas registradas.</p>
+      {% endif %}
     </div>
 
     <!-- ARCHIVOS -->

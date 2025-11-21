@@ -1,0 +1,172 @@
+{
+  "info": {
+    "name": "Helpdesk API",
+    "_postman_id": "8b7d3a36-09cb-4c35-9dd0-31e234cfa101",
+    "description": "Colección para probar la API del sistema Helpdesk (Tickets, Estados, Historial, Comentarios y Visitas).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Tickets",
+      "item": [
+        {
+          "name": "Listar Tickets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:8000/api/tickets"
+          }
+        },
+        {
+          "name": "Obtener Ticket por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:8000/api/tickets/1"
+          }
+        },
+        {
+          "name": "Crear Ticket",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_client\": 1,\n  \"priority\": \"Alta\",\n  \"title\": \"Prueba desde Postman\",\n  \"description\": \"Probando la creación de tickets\"\n}"
+            },
+            "url": "http://127.0.0.1:8000/api/tickets"
+          }
+        },
+        {
+          "name": "Actualizar Ticket",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_client\": 1,\n  \"priority\": \"Media\",\n  \"title\": \"Ticket actualizado\",\n  \"description\": \"Descripción actualizada\"\n}"
+            },
+            "url": "http://127.0.0.1:8000/api/tickets/1"
+          }
+        },
+        {
+          "name": "Eliminar Ticket",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://127.0.0.1:8000/api/tickets/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "States",
+      "item": [
+        {
+          "name": "Listar States de Ticket",
+          "request": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8000/api/tickets/1/states"
+          }
+        },
+        {
+          "name": "Cambiar Estado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"En proceso\",\n  \"id_employee\": 1\n}"
+            },
+            "url": "http://127.0.0.1:8000/api/tickets/1/states"
+          }
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "item": [
+        {
+          "name": "Historial del Ticket",
+          "request": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8000/api/tickets/1/history"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Listar Comentarios",
+          "request": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8000/api/tickets/1/comments"
+          }
+        },
+        {
+          "name": "Crear Comentario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Comentario desde Postman\"\n}"
+            },
+            "url": "http://127.0.0.1:8000/api/tickets/1/comments"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Visits",
+      "item": [
+        {
+          "name": "Listar Visits",
+          "request": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8000/api/tickets/1/visits"
+          }
+        },
+        {
+          "name": "Crear Visit",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Visita registrada desde Postman\"\n}"
+            },
+            "url": "http://127.0.0.1:8000/api/tickets/1/visits"
+          }
+        }
+      ]
+    }
+  ]
+}
