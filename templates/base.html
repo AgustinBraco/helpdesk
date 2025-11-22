@@ -4,11 +4,16 @@
   <head>
     <meta charset="UTF-8" />
     <title>{% block title %}Helpdesk{% endblock %}</title>
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- CSS global -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
+
   <body>
-    {% block content %} {% endblock %}
+    {% block content %}{% endblock %}
 
     <!-- JS global -->
     <script src="{% static 'js/scripts.js' %}"></script>

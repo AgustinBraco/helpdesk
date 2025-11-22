@@ -1,11 +1,14 @@
 from django.contrib import admin
+from helpdesk.api import api
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from helpdesk.views import home_redirect
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/", api.urls),
     path("", home_redirect, name="home"),
     path("", include("apps.users.urls")),
     path("", include("apps.tickets.urls")),

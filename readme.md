@@ -25,6 +25,13 @@
 - `SU_EMAIL`
 - `DEBUG`
 
+# Base de Datos PostgreSQL
+- `DB_NAME`
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_HOST`
+- `DB_PORT`
+
 ### Crear migraciones
 
 `python3 manage.py makemigrations`
